@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2>{{ jugador['nombre'] }}</h2>
+            <p><strong>Tipo:</strong> {{ jugador['tipo'] }}</p>
+            <p><strong>Edad:</strong> {{ jugador['edad'] }}</p>
+            <p><strong>Número de camiseta:</strong> {{ jugador['num_camiseta'] }}</p>
+            <div class="d-flex gap-2 mt-3">
+                {% if session.get('role') == 'admin' %}
+                    <a href="/jugadores/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar</a>
+                    <a href="/jugadores/eliminar/{{ jugador['id'] }}" class="btn btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</a>
+                {% endif %}
+                <a href="/jugadores/ver_jugadores" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+    </div>
+
+    {% if jugador['estadistica'] %}
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h3>📊 Estadísticas</h3>
+            <table class="table">
+                <tr><td>Goles</td><td><strong>{{ jugador['estadistica']['goles'] }}</strong></td></tr>
+                <tr><td>Asistencias</td><td><strong>{{ jugador['estadistica']['asistencias'] }}</strong></td></tr>
+                <tr><td>Efectividad de pases</td><td><strong>{{ jugador['estadistica']['efectividad_pases'] }}%</strong></td></tr>
+                <tr><td>Faltas</td><td><strong>{{ jugador['estadistica']['faltas'] }}</strong></td></tr>
+                <tr><td>Tarjetas amarillas</td><td><strong>{{ jugador['estadistica']['tarj_amarillas'] }}</strong></td></tr>
+                <tr><td>Tarjetas rojas</td><td><strong>{{ jugador['estadistica']['tarj_rojas'] }}</strong></td></tr>
+            </table>
+            {% if session.get('role') == 'admin' %}
+                <a href="/estadisticas/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar estadísticas</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

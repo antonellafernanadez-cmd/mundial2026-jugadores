@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center mt-4">
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h2 class="mb-4">{{ 'Editar Jugador' if jugador else 'Agregar Jugador' }}</h2>
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" name="nombre" class="form-control" value="{{ jugador.nombre if jugador else '' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Edad</label>
+                    <input type="number" name="edad" class="form-control" value="{{ jugador.edad if jugador else '' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Número de camiseta</label>
+                    <input type="number" name="num_camiseta" class="form-control" value="{{ jugador.num_camiseta if jugador else '' }}" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tipo</label>
+                    <select name="tipo" class="form-control">
+                        <option value="arquero" {% if jugador and jugador.tipo == 'arquero' %}selected{% endif %}>Arquero</option>
+                        <option value="defensor" {% if jugador and jugador.tipo == 'defensor' %}selected{% endif %}>Defensor</option>
+                        <option value="mediocampista" {% if jugador and jugador.tipo == 'mediocampista' %}selected{% endif %}>Mediocampista</option>
+                        <option value="delantero" {% if jugador and jugador.tipo == 'delantero' %}selected{% endif %}>Delantero</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Selección</label>
+                    <select name="seleccion_id" class="form-control">
+                        {% for seleccion in selecciones %}
+                            <option value="{{ seleccion.id }}" {% if jugador and jugador.seleccion_id == seleccion.id %}selected{% endif %}>{{ seleccion.pais }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <a href="/jugadores/" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
