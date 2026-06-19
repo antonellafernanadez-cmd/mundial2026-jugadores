@@ -21,17 +21,22 @@ class Jugador(db.Model):
     #permitiendo que múltiples clases hereden de una misma tabla
 
     def __init__(self, nombre, edad, num_camiseta, seleccion_id=None):
-        if not nombre:
-            raise ValueError("El nombre es obligatorio")
-        if edad < 15:
-            raise ValueError("Edad inválida")
-        if num_camiseta <= 0:
-            raise ValueError("Número de camiseta inválido")
+        self.validar(nombre, edad, num_camiseta)
 
         self.nombre = nombre
         self.edad = edad
         self.num_camiseta = num_camiseta
         self.seleccion_id = seleccion_id
+
+    @staticmethod
+    def validar(nombre, edad, num_camiseta):
+        # Validaciones reutilizadas tanto al crear (__init__) como al editar (controller)
+        if not nombre:
+            raise ValueError("El nombre es obligatorio")
+        if edad is None or edad < 16:
+            raise ValueError("Edad inválida")
+        if num_camiseta is None or num_camiseta < 1 or num_camiseta > 99:
+            raise ValueError("El número de camiseta debe estar entre 1 y 99")
 
     def serialize(self):
         return {

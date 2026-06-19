@@ -4,18 +4,21 @@
     <div class="col-md-6">
         <div class="card p-4">
             <h2 class="mb-4">{{ 'Editar Jugador' if jugador else 'Agregar Jugador' }}</h2>
-            <form method="POST">
+            {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+            <form method="POST" novalidate>
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
-                    <input type="text" name="nombre" class="form-control" value="{{ jugador.nombre if jugador else '' }}" required>
+                    <input type="text" name="nombre" class="form-control" placeholder="Campo obligatorio" value="{{ jugador.nombre if jugador else '' }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Edad</label>
-                    <input type="number" name="edad" class="form-control" value="{{ jugador.edad if jugador else '' }}" required>
+                    <input type="number" name="edad" class="form-control" placeholder="Debe ser mayor a 16 años" value="{{ jugador.edad if jugador else '' }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Número de camiseta</label>
-                    <input type="number" name="num_camiseta" class="form-control" value="{{ jugador.num_camiseta if jugador else '' }}" required>
+                    <input type="number" name="num_camiseta" class="form-control" placeholder="Debe ser entre 1 y 99" value="{{ jugador.num_camiseta if jugador else '' }}">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tipo</label>
