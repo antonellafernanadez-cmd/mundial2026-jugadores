@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="home-wrapper d-flex flex-column justify-content-between">
+
+    <header class="hero-section d-flex align-items-center flex-grow-1">
+        <div class="container">
+            <div class="row align-items-center text-white">
+                
+                <div class="col-lg-6 col-md-12 text-md-start text-center mb-4 mb-lg-0">
+                    <h1 class="display-3 fw-bold hero-title text-uppercase">
+                        Viví el <span class="text-primary-custom">Mundial 2026</span> como nunca antes
+                    </h1>
+                    <p class="lead hero-subtitle mt-3">
+                        Acá podrás explorar las selecciones clasificadas, conocer a cada uno de los jugadores, 
+                        analizar sus estadísticas, goles, asistencias y mucho más.
+                        <br><br>
+                        Toda la información clave del torneo, en un solo lugar.
+                    </p>
+                    <div class="mt-4 d-flex flex-wrap gap-3 justify-content-md-start justify-content-center">
+                        <a href="/jugadores/ver_jugadores" class="btn btn-primary-custom">
+                            <i class="bi bi-people-fill me-2"></i> Explorar jugadores
+                        </a>
+                        <a href="/selecciones/ver_selecciones" class="btn btn-outline-custom">
+                            <i class="bi bi-flag-fill me-2"></i> Ver selecciones
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-md-12 text-center">
+                    <img src="{{ url_for('static', filename='images/logo_mundial.png') }}" alt="FIFA World Cup 2026" class="img-fluid logo-hero-img">
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+</div>
+{% endblock %}

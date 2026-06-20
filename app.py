@@ -1,6 +1,6 @@
 from models.db import db
 from config.config import DATABASE_CONNECTION_URI
-from flask import Flask
+from flask import Flask, render_template
 from routes.routes_auth import auth_bp
 from routes.routes_estadisticas import estadisticas_bp
 from routes.routes_jugadores import jugadores_bp
@@ -26,6 +26,10 @@ with app.app_context():
     from models.jugadores import Jugador, Arquero, Defensor, Mediocampista, Delantero
     from models.estadisticas import Estadistica
     db.create_all()
+
+@app.route('/')
+def home():
+    return render_template('home.html')
 
 if __name__=="__main__":
     app.run(debug=True)
