@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if session.get('role') == 'admin' %}
+    {% set fondo = url_for('static', filename='images/estadio_pelota.png') %}
+{% else %}
+    {% set fondo = url_for('static', filename='images/estadio_copa.png') %}
+{% endif %}
+
+<div class="welcome-hero d-flex flex-column justify-content-center align-items-center text-center text-white"
+     style="background: linear-gradient(to bottom, rgba(2, 7, 16, 0.3), rgba(2, 7, 16, 0.6)), url('{{ fondo }}') no-repeat center center; background-size: cover; min-height: 75vh;">
+            
+    <div class="container py-5">
+        {% if session.get('role') == 'admin' %}
+            <h1 class="display-3 fw-bold mb-2 text-uppercase">¡BIENVENIDO, ADMINISTRADOR!</h1>
+            <h2 class="h4 text-light opacity-90 mb-4">A la sección de Jugadores del Mundial 2026</h2>
+            <p class="lead mx-auto" style="max-width: 600px; color: #e2e8f0;">
+                Gestioná jugadores, selecciones, usuarios y toda la información del Mundial 2026.
+            </p>
+        {% else %}
+            <h1 class="display-3 fw-bold mb-2 text-uppercase">¡BIENVENIDO!</h1>
+            <h2 class="h4 text-light opacity-90 mb-4">A la sección de Jugadores del Mundial 2026</h2>
+            <p class="lead mx-auto" style="max-width: 600px; color: #e2e8f0;">
+                Explorá las selecciones del mundial y conocé los mejores jugadores del mundo.
+            </p>
+        {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}
