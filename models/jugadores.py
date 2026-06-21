@@ -9,6 +9,7 @@ class Jugador(db.Model):
     edad = db.Column(db.Integer, nullable=False)
     num_camiseta = db.Column(db.Integer, nullable=False)
     tipo = db.Column(db.String(50))  # columna discriminadora para polimorfismo
+    foto_url = db.Column(db.String(300), nullable=True)  # URL de la foto del jugador (viene de API-Football)
     seleccion_id = db.Column(db.Integer, db.ForeignKey("selecciones.id"), nullable=True) # Clave foránea hacia selecciones
     estadistica = db.relationship("Estadistica", backref="jugador", uselist=False) # Relación 1 a 1 con Estadistica
 
@@ -20,13 +21,14 @@ class Jugador(db.Model):
     #usamos un campo discrimador "tipo", junto con __mapper_args__ para implemetar el polifirmismo en SQLAlchemy
     #permitiendo que múltiples clases hereden de una misma tabla
 
-    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None):
+    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None, foto_url=None):
         self.validar(nombre, edad, num_camiseta)
 
         self.nombre = nombre
         self.edad = edad
         self.num_camiseta = num_camiseta
         self.seleccion_id = seleccion_id
+        self.foto_url=foto_url
 
     @staticmethod
     def validar(nombre, edad, num_camiseta):
@@ -45,6 +47,7 @@ class Jugador(db.Model):
             "edad": self.edad,
             "num_camiseta": self.num_camiseta,
             "tipo": self.tipo,
+            "foto_url":self.foto_url,
             "seleccion_id": self.seleccion_id,
             "estadistica": self.estadistica.serialize() if self.estadistica else None
         }
@@ -55,8 +58,8 @@ class Arquero(Jugador):
         'polymorphic_identity': 'arquero'
     }
 
-    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None):
-        super().__init__(nombre, edad, num_camiseta, seleccion_id)
+    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None, foto_url=None):
+        super().__init__(nombre, edad, num_camiseta, seleccion_id, foto_url)
 
 
 class Defensor(Jugador):
@@ -64,8 +67,8 @@ class Defensor(Jugador):
         'polymorphic_identity': 'defensor'
     }
 
-    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None):
-        super().__init__(nombre, edad, num_camiseta, seleccion_id)
+    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None, foto_url=None):
+        super().__init__(nombre, edad, num_camiseta, seleccion_id, foto_url)
 
 
 class Mediocampista(Jugador):
@@ -73,8 +76,8 @@ class Mediocampista(Jugador):
         'polymorphic_identity': 'mediocampista'
     }
 
-    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None):
-        super().__init__(nombre, edad, num_camiseta, seleccion_id)
+    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None, foto_url=None):
+        super().__init__(nombre, edad, num_camiseta, seleccion_id, foto_url)
 
 
 class Delantero(Jugador):
@@ -82,7 +85,7 @@ class Delantero(Jugador):
         'polymorphic_identity': 'delantero'
     }
 
-    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None):
-        super().__init__(nombre, edad, num_camiseta, seleccion_id)
+    def __init__(self, nombre, edad, num_camiseta, seleccion_id=None, foto_url=None):
+        super().__init__(nombre, edad, num_camiseta, seleccion_id, foto_url)
 
     #cuando se crea un jugador desde el controllers, automaticamente se guarda con el tipo.

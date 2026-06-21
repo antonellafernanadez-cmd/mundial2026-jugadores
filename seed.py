@@ -106,6 +106,7 @@ def populate_seleccion(info):
         edad = j.get("age")
         num_camiseta = j.get("number") or 0
         posicion = j.get("position")
+        foto_url = j.get("photo")
         tipo = POSICION_A_TIPO.get(posicion, "defensor")
 
         if not nombre or not edad:
@@ -116,7 +117,8 @@ def populate_seleccion(info):
             nombre=nombre,
             edad=edad,
             num_camiseta=num_camiseta,
-            seleccion_id=seleccion.id
+            seleccion_id=seleccion.id,
+            foto_url=foto_url
         )
         db.session.add(jugador)
         db.session.flush()
