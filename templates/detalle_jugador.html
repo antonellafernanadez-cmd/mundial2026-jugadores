@@ -12,14 +12,10 @@
                     <a href="/jugadores/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar</a>
                     <a href="/jugadores/eliminar/{{ jugador['id'] }}" class="btn btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</a>
                 {% endif %}
-<<<<<<< HEAD
                 
 
                 <!--cambie el boton volver -->
             <a href="{{ url_for('seleccion.get_seleccion', id=jugador.seleccion_id) }}" class="btn btn-secondary">Volver</a>
-=======
-                <a href="/jugadores/ver_jugadores" class="btn btn-secondary">Volver</a>
->>>>>>> main
             </div>
         </div>
     </div>

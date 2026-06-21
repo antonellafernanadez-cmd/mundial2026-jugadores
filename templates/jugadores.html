@@ -8,36 +8,38 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Edad</th>
-                    <th>Camiseta</th>
-                    <th>Tipo</th>
-                    <th>Selección</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for jugador in jugadores %}
-                <tr>
-                    <td>{{ jugador.nombre }}</td>
-                    <td>{{ jugador.edad }}</td>
-                    <td>{{ jugador.num_camiseta }}</td>
-                    <td>{{ jugador.tipo }}</td>
-                    <td>{{ jugador.seleccion.pais if jugador.seleccion else '-' }}</td>
-                    <td>
-                        <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-sm btn-primary">Ver</a>
-                        {% if session.get('role') == 'admin' %}
-                            <a href="/jugadores/editar/{{ jugador.id }}" class="btn btn-sm btn-warning">Editar</a>
-                            <a href="/jugadores/eliminar/{{ jugador.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que querés eliminar este jugador?')">Eliminar</a>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Camiseta</th>
+                        <th>Tipo</th>
+                        <th>Selección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jugador in jugadores %}
+                    <tr>
+                        <td>{{ jugador.nombre }}</td>
+                        <td>{{ jugador.edad }}</td>
+                        <td>{{ jugador.num_camiseta }}</td>
+                        <td>{{ jugador.tipo }}</td>
+                        <td>{{ jugador.seleccion.pais if jugador.seleccion else '-' }}</td>
+                        <td>
+                            <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-sm btn-primary">Ver</a>
+                            {% if session.get('role') == 'admin' %}
+                                <a href="/jugadores/editar/{{ jugador.id }}" class="btn btn-sm btn-warning">Editar</a>
+                                <a href="/jugadores/eliminar/{{ jugador.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que querés eliminar este jugador?')">Eliminar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>    
     </div>
 </div>
 {% endblock %}
