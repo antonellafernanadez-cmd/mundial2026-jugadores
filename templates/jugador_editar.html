@@ -1,38 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row justify-content-center mt-4">
-    <div class="col-md-6">
-        <div class="card p-4">
-            <h2 class="mb-4">Editar Jugador</h2>
-            {% if error %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endif %}
-            <form method="POST" novalidate>
-                <div class="mb-3">
-                    <label class="form-label">Nombre</label>
-                    <input type="text" name="nombre" class="form-control" value="{{ jugador.nombre }}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Edad</label>
-                    <input type="number" name="edad" class="form-control" value="{{ jugador.edad }}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Número de camiseta</label>
-                    <input type="number" name="num_camiseta" class="form-control" value="{{ jugador.num_camiseta }}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Selección</label>
-                    <select name="seleccion_id" class="form-control">
-                        {% for seleccion in selecciones %}
-                            <option value="{{ seleccion.id }}" {% if jugador.seleccion_id == seleccion.id %}selected{% endif %}>{{ seleccion.pais }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                    <a href="/jugadores/ver_jugadores" class="btn btn-secondary">Cancelar</a>
-                </div>
-            </form>
+<div class="auth-wrapper">
+    <div class="container d-flex align-items-center justify-content-center flex-grow-1" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="col-md-6">
+            <div class="auth-card p-4">
+                <h2 class="mb-4">Editar Jugador</h2>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+                <form method="POST" novalidate>
+                    <div class="mb-3">
+                        <label class="form-label auth-label">Nombre</label>
+                        <input type="text" name="nombre" class="form-control auth-input" value="{{ jugador.nombre }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label auth-label">Edad</label>
+                        <input type="number" name="edad" class="form-control auth-input" value="{{ jugador.edad }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label auth-label">Número de camiseta</label>
+                        <input type="number" name="num_camiseta" class="form-control auth-input" value="{{ jugador.num_camiseta }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label auth-label">Selección</label>
+                        <select name="seleccion_id" class="form-control auth-input">
+                            {% for seleccion in selecciones %}
+                                <option value="{{ seleccion.id }}" {% if jugador.seleccion_id == seleccion.id %}selected{% endif %}>{{ seleccion.pais }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-auth-submit">Guardar cambios</button>
+                        <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-secondary">Cancelar</a>
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

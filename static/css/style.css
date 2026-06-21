@@ -357,3 +357,65 @@ body {
 .welcome-hero p {
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 2px 5px rgba(0, 0, 0, 0.7);
 }
+
+/* ==========================================================================
+   TABLAS Y CARDS OSCURAS (Sección Jugadores, Selecciones, Usuarios)
+   ========================================================================== */
+.card {
+    background-color: #020710 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 10px;
+}
+
+.table {
+    color: #ffffff;
+    margin-bottom: 0;
+    --bs-table-bg: transparent;
+    --bs-table-color: #ffffff;
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+    --bs-table-hover-bg: rgba(0, 86, 255, 0.12);
+    --bs-table-hover-color: #ffffff;
+}
+
+.table thead th {
+    background-color: #01060e;
+    color: #3b82f6;
+    border-bottom: 2px solid #0056ff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 86, 255, 0.12);
+    color: #ffffff;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0.85rem 0.75rem;
+}
+
+/* Por si en algún momento se usa table-striped, anulamos el blanco de Bootstrap */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Links de "Ver" dentro de tablas, con el celeste de la app */
+.table a.btn-primary {
+    background-color: #0056ff !important;
+    border-color: #0056ff !important;
+}
+
+
+.header-jugadores {
+    background: linear-gradient(to bottom, rgba(2, 7, 16, 0.55), rgba(2, 7, 16, 0.75)), url('/static/images/estadio_pelota.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 1.8rem;
+}
