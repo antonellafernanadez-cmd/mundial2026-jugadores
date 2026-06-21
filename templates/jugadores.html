@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h2>Jugadores</h2>
+<div class="header-jugadores mb-4 d-flex justify-content-between align-items-start flex-wrap gap-3"
+     style="background: linear-gradient(to bottom, rgba(2, 7, 16, 0.55), rgba(2, 7, 16, 0.75)), url('{{ url_for('static', filename='images/estadio_pelota.png') }}') no-repeat center center; background-size: cover; border-radius: 10px; padding: 1.8rem;">
+    <div>
+        <h2 class="mb-1 text-white text-uppercase fw-bold">Jugadores</h2>
+        <p class="mb-0 text-light opacity-75">Explorá todos los jugadores del Mundial 2026.</p>
+    </div>
     {% if session.get('role') == 'admin' %}
         <a href="/jugadores/crear" class="btn btn-primary">+ Agregar Jugador</a>
     {% endif %}
@@ -22,11 +26,42 @@
             <tbody>
                 {% for jugador in jugadores %}
                 <tr>
-                    <td>{{ jugador.nombre }}</td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            {% if jugador.foto_url %}
+                                <img src="{{ jugador.foto_url }}" alt="{{ jugador.nombre }}" class="rounded-circle" width="36" height="36" style="object-fit: cover;">
+                            {% else %}
+                                <i class="bi bi-person-circle fs-4 text-secondary"></i>
+                            {% endif %}
+                            <span>{{ jugador.nombre }}</span>
+                        </div>
+                    </td>
                     <td>{{ jugador.edad }}</td>
                     <td>{{ jugador.num_camiseta }}</td>
-                    <td>{{ jugador.tipo }}</td>
-                    <td>{{ jugador.seleccion.pais if jugador.seleccion else '-' }}</td>
+                    <td>
+                        {% if jugador.tipo == 'arquero' %}
+                            <span class="badge bg-success">ARQUERO</span>
+                        {% elif jugador.tipo == 'defensor' %}
+                            <span class="badge bg-primary">DEFENSOR</span>
+                        {% elif jugador.tipo == 'mediocampista' %}
+                            <span class="badge bg-warning text-dark">MEDIOCAMPISTA</span>
+                        {% elif jugador.tipo == 'delantero' %}
+                            <span class="badge bg-danger">DELANTERO</span>
+                        {% else %}
+                            <span class="badge bg-secondary">{{ jugador.tipo }}</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if jugador.seleccion %}
+                            {% set img_bandera = jugador.seleccion.pais | bandera %}
+                            {% if img_bandera %}
+                                <img src="{{ img_bandera }}" alt="{{ jugador.seleccion.pais }}" width="20" class="me-1">
+                            {% endif %}
+                            {{ jugador.seleccion.pais }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
                     <td>
                         <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-sm btn-primary">Ver</a>
                         {% if session.get('role') == 'admin' %}
