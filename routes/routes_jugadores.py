@@ -40,10 +40,13 @@ def crear_jugador_form():
 @login_required
 @admin_required
 def crear_jugador_post():
+    edad_raw = request.form.get('edad', '')
+    num_camiseta_raw = request.form.get('num_camiseta', '')
+
     data = {
-        "nombre": request.form['nombre'],
-        "edad": int(request.form['edad']),
-        "num_camiseta": int(request.form['num_camiseta']),
+        "nombre": request.form.get('nombre', '').strip(),
+        "edad": int(edad_raw) if edad_raw.strip().isdigit() else None,
+        "num_camiseta": int(num_camiseta_raw) if num_camiseta_raw.strip().isdigit() else None,
         "tipo": request.form['tipo'],
         "seleccion_id": int(request.form['seleccion_id'])
     }
@@ -69,10 +72,13 @@ def editar_jugador_form(id):
 @login_required
 @admin_required
 def editar_jugador_post(id):
+    edad_raw = request.form.get('edad', '')
+    num_camiseta_raw = request.form.get('num_camiseta', '')
+
     data = {
-        "nombre": request.form['nombre'],
-        "edad": int(request.form['edad']),
-        "num_camiseta": int(request.form['num_camiseta']),
+        "nombre": request.form.get('nombre', '').strip(),
+        "edad": int(edad_raw) if edad_raw.strip().isdigit() else None,
+        "num_camiseta": int(num_camiseta_raw) if num_camiseta_raw.strip().isdigit() else None,
         "seleccion_id": int(request.form['seleccion_id'])
     }
     resultado = actualizar_jugador(id, data)

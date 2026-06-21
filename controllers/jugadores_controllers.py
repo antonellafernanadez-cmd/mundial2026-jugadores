@@ -64,6 +64,7 @@ def obtener_jugadores():
 
 
 # Actualizar jugador
+# Actualizar jugador
 def actualizar_jugador(id, data):
     try:
         jugador = Jugador.query.get(id)
@@ -87,6 +88,12 @@ def actualizar_jugador(id, data):
             "seleccion_id": int
         }
 
+        nombre_final = data.get("nombre", jugador.nombre)
+        edad_final = data.get("edad", jugador.edad)
+        num_camiseta_final = data.get("num_camiseta", jugador.num_camiseta)
+
+        Jugador.validar(nombre_final, edad_final, num_camiseta_final)
+
         for key, value in data.items():
             if key in campos_permitidos and isinstance(value, campos_permitidos[key]):
                 setattr(jugador, key, value)
@@ -94,6 +101,8 @@ def actualizar_jugador(id, data):
         db.session.commit()
         return jugador.serialize()
 
+    except ValueError as error:
+        return {"error": str(error)}
     except Exception as error:
         db.session.rollback()
         return {"error": str(error)}

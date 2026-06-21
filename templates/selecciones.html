@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="mb-4">Selecciones</h2>
+<div class="row">
+    {% for seleccion in selecciones %}
+    <div class="col-md-4 mb-3">
+        <div class="card p-3">
+            <h5>{{ seleccion.pais }}</h5>
+            <p class="mb-1"><strong>Entrenador:</strong> {{ seleccion.entrenador }}</p>
+            <p class="mb-2"><strong>Jugadores:</strong> {{ seleccion.jugadores|list|length }}</p>
+            <a href="/selecciones/{{ seleccion.id }}" class="btn btn-primary btn-sm">Ver jugadores</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
