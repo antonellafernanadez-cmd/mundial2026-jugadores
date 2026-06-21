@@ -1,0 +1,359 @@
+/* ==========================================================================
+   CONFIGURACIONES GENERALES Y TIPOGRAFÍA
+   ========================================================================== */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
+
+body {
+    background-color: #01060e;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Colores personalizados recurrentes */
+.text-primary-custom {
+    color: #0056ff !important;
+}
+
+.text-gray {
+    color: #a0aec0;
+}
+
+.text-muted-custom {
+    color: #718096;
+}
+
+.tracking-wide {
+    letter-spacing: 2px;
+}
+
+.fs-7 {
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   NAVBAR (BARRA DE NAVEGACIÓN SUPERIOR)
+   ========================================================================== */
+.custom-navbar {
+    background-color: #020710 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-logo {
+    height: 45px;
+    object-fit: contain;
+}
+
+/* Contenedor del texto al lado del logo */
+.brand-text-wrapper {
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+}
+
+/* Arreglo de separación de palabras "Mundial 2026" y "Jugadores" */
+.brand-text-wrapper span.fs-5 {
+    line-height: 1.3 !important;
+    font-size: 1.15rem !important;
+}
+
+.text-primary-nav {
+    color: #2b5cff;
+    font-size: 0.8rem !important;
+    line-height: 1.1 !important;
+}
+
+/* Botón activo (Inicio) con su línea azul inferior */
+.nav-link-home {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.nav-active-line {
+    position: absolute;
+    bottom: -18px;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    background-color: #0056ff;
+    border-radius: 10px;
+}
+
+/* Botones de Acceso (Derecha) */
+.btn-login {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+}
+
+.btn-login:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.btn-register-nav {
+    background-color: #0056ff;
+    border: none;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-register-nav:hover {
+    background-color: #0046cc;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DE LA PÁGINA HOME (CON SCROLL)
+   ========================================================================== */
+.home-wrapper {
+    background-color: #01060e;
+    min-height: 100vh;
+    overflow-y: auto; /* Permite el uso del cursor para deslizar de forma natural */
+}
+
+/* ==========================================================================
+   SECCIÓN SUPERIOR (ESTADIO / HERO)
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(to bottom, rgba(1, 6, 14, 0.2), rgba(1, 6, 14, 0.4)), 
+                url('/static/images/estadio_noche.jpg') no-repeat center top;
+    background-size: cover;
+    padding-top: 80px;
+    padding-bottom: 60px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.02);
+}
+
+.hero-title {
+    font-size: 3.2rem;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    color: #ffffff !important; /* Blanco puro para que resalte */
+    font-weight: 500; /* Le da más cuerpo y grosor a la letra (semi-bold) */
+    max-width: 540px;
+    line-height: 1.5; /* Separa un poquito las líneas para que no se amontone */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Una sutil sombra negra detrás de las letras para despegarlas del fondo */
+}
+
+.logo-hero-img {
+    max-height: 420px;
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5));
+}
+
+/* BOTONES PRINCIPALES (Estilo original recuperado) */
+.btn-primary-custom {
+    background-color: #0056ff !important;
+    border: none !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    padding: 10px 24px !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 86, 255, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-primary-custom:hover {
+    background-color: #0043c8 !important;
+    transform: translateY(-1px);
+}
+
+.btn-outline-custom {
+    background-color: rgba(94, 139, 47, 0.2) !important; /* Fondo verde transparente */
+    border: 2px solid #5e8b2f !important;                /* Borde verde definido */
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    padding: 10px 24px !important;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-outline-custom:hover {
+    background-color: rgba(94, 139, 47, 0.4) !important;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   SECCIÓN INFERIOR (CONTENIDO OSCURO / CARDS)
+   ========================================================================== */
+.info-section {
+    background-color: #01060e; /* Fondo oscuro liso e independiente del estadio */
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+.section-divider {
+    height: 3px;
+    width: 60px;
+    background-color: #0056ff;
+    border-radius: 2px;
+}
+
+/* Tarjetas con la estética azulada traslúcida original */
+.feature-card {
+    background: rgba(5, 15, 28, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 86, 255, 0.3) !important;
+}
+
+/* Envoltorio de los íconos de Bootstrap (Tecnológico celular/celeste) */
+.icon-blue-wrapper {
+    background-color: rgba(0, 86, 255, 0.15);
+    color: #3b82f6;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.5rem;
+}
+
+
+/* ==========================================================================
+   ESTRUCTURA DE AUTENTICACIÓN PREMIUM (REGISTRO / LOGIN)
+   ========================================================================== */
+
+.auth-wrapper {
+    min-height: 100vh;
+    /* Degradé premium fluido de 3 tonos: Negro de fondo profundo, Azul Mundial de transición y Celeste sutil */
+    background: linear-gradient(135deg, #020710 20%, #002277 65%, #0056ff 100%) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Agregamos un extra opcional para suavizar aún más la tarjeta blanca sobre este fondo */
+.auth-card {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 24px !important; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important; /* Sombra más suave y natural */
+    padding: 40px;
+    max-width: 520px; 
+    width: 100%;
+}
+
+/* Escudo Azul Superior con icono blanco */
+.auth-icon-header {
+    background-color: #0056ff;
+    color: #ffffff;
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 8px 20px rgba(0, 86, 255, 0.25);
+}
+
+.auth-card h2 {
+    color: #0f172a !important; /* Color oscuro profesional */
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.auth-card .subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Inputs y Selectores */
+.auth-label {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.auth-input {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    color: #0f172a !important;
+    font-size: 0.95rem;
+}
+
+.auth-input:focus {
+    border-color: #0056ff !important;
+    box-shadow: 0 0 0 4px rgba(0, 86, 255, 0.15) !important;
+}
+
+/* Botón de envío azul */
+.btn-auth-submit {
+    background-color: #0056ff !important;
+    border: none !important;
+    color: #ffffff !important;
+    padding: 14px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 1rem;
+    transition: all 0.2s ease !important;
+}
+
+.btn-auth-submit:hover {
+    background-color: #0046cc !important;
+    transform: translateY(-1px);
+}
+
+.auth-footer-link {
+    color: #0056ff !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer institucional oscuro */
+.static-footer {
+    background-color: rgba(2, 7, 16, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   CONTENEDOR DE BIENVENIDA (ESTADIO Y TEXTOS)
+   ========================================================================== */
+.welcome-hero {
+    min-height: 85vh; /* Ocupa casi toda la pantalla disponible abajo del navbar */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Evita que la imagen se repita y la estira para que cubra toda la pantalla */
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    
+    position: relative;
+    padding: 60px 20px;
+}
+
+/* Sombra pesada para que los títulos blancos resalten sobre los reflectores del estadio */
+.welcome-hero h1, 
+.welcome-hero h2, 
+.welcome-hero p {
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 2px 5px rgba(0, 0, 0, 0.7);
+}

@@ -12,12 +12,19 @@ def login():
         if user and user.check_password(password):
             session['user_id'] = user.id
             session['username'] = user.username
-            session['role'] = user.role
-            return redirect(url_for('jugadores.get_jugadores'))  # redirige a lista de jugadores
+            session['role'] = user.role  #guarda admin o user
+            return redirect(url_for('routes_auth.bienvenida'))
         else:
             return render_template('login.html', error="Credenciales inválidas")
     return render_template('login.html')
 
+@auth_bp.route('/bienvenida')
+def bienvenida():
+    # Seguridad: Si no está logueado, rebota al login
+    if 'user_id' not in session:
+        return redirect(url_for('routes_auth.login'))
+    
+    return render_template('bienvenida.html')
 
 @auth_bp.route('/logout')
 def logout():
