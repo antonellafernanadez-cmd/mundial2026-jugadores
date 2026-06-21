@@ -1,46 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row mt-4">
-    <div class="col-md-6">
-        <div class="card p-4">
-            <h2>{{ jugador['nombre'] }}</h2>
-            <p><strong>Tipo:</strong> {{ jugador['tipo'] }}</p>
-            <p><strong>Edad:</strong> {{ jugador['edad'] }}</p>
-            <p><strong>Número de camiseta:</strong> {{ jugador['num_camiseta'] }}</p>
-            <div class="d-flex gap-2 mt-3">
-                {% if session.get('role') == 'admin' %}
-                    <a href="/jugadores/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar</a>
-                    <a href="/jugadores/eliminar/{{ jugador['id'] }}" class="btn btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</a>
+<div class="auth-wrapper">
+    <div class="row mt-4 w-100 justify-content-center">
+        <div class="col-md-5">
+            <div class="auth-card p-4 text-center mx-auto">
+                {% if jugador['foto_url'] %}
+                    <img src="{{ jugador['foto_url'] }}" alt="{{ jugador['nombre'] }}"
+                         class="mx-auto mb-3 rounded"
+                         style="width: 220px; height: 260px; object-fit: cover; border: 3px solid #0056ff;">
+                {% else %}
+                    <div class="mx-auto mb-3 rounded d-flex align-items-center justify-content-center"
+                         style="width: 220px; height: 260px; border: 3px solid #0056ff; background-color: #f1f5f9;">
+                        <i class="bi bi-person-fill" style="font-size: 100px; color: #0056ff;"></i>
+                    </div>
                 {% endif %}
-<<<<<<< HEAD
-                
 
-                <!--cambie el boton volver -->
-            <a href="{{ url_for('seleccion.get_seleccion', id=jugador.seleccion_id) }}" class="btn btn-secondary">Volver</a>
-=======
-                <a href="/jugadores/ver_jugadores" class="btn btn-secondary">Volver</a>
->>>>>>> main
+                <h2 class="mb-3">{{ jugador['nombre'] }}</h2>
+
+                <div class="text-start mx-auto" style="max-width: 280px; color: #0f172a;">
+                    <p><strong>Tipo:</strong> {{ jugador['tipo'] }}</p>
+                    <p><strong>Edad:</strong> {{ jugador['edad'] }}</p>
+                    <p><strong>Número de camiseta:</strong> {{ jugador['num_camiseta'] }}</p>
+                </div>
+
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    {% if session.get('role') == 'admin' %}
+                        <a href="/jugadores/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar</a>
+                        <a href="/jugadores/eliminar/{{ jugador['id'] }}" class="btn btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</a>
+                    {% endif %}
+                    <a href="/jugadores/ver_jugadores" class="btn btn-secondary">Volver</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    {% if jugador['estadistica'] %}
-    <div class="col-md-6">
-        <div class="card p-4">
-            <h3>Estadísticas</h3>
-            <table class="table">
-                <tr><td>Goles</td><td><strong>{{ jugador['estadistica']['goles'] }}</strong></td></tr>
-                <tr><td>Asistencias</td><td><strong>{{ jugador['estadistica']['asistencias'] }}</strong></td></tr>
-                <tr><td>Efectividad de pases</td><td><strong>{{ jugador['estadistica']['efectividad_pases'] }}%</strong></td></tr>
-                <tr><td>Faltas</td><td><strong>{{ jugador['estadistica']['faltas'] }}</strong></td></tr>
-                <tr><td>Tarjetas amarillas</td><td><strong>{{ jugador['estadistica']['tarj_amarillas'] }}</strong></td></tr>
-                <tr><td>Tarjetas rojas</td><td><strong>{{ jugador['estadistica']['tarj_rojas'] }}</strong></td></tr>
-            </table>
-            {% if session.get('role') == 'admin' %}
-                <a href="/estadisticas/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar estadísticas</a>
-            {% endif %}
+        {% if jugador['estadistica'] %}
+        <div class="col-md-5">
+            <div class="auth-card p-4">
+                <h2 class="mb-3">Estadísticas</h2>
+                <table class="table">
+                    <tr><td style="color:#0f172a;">Goles</td><td style="color:#0f172a;"><strong>{{ jugador['estadistica']['goles'] }}</strong></td></tr>
+                    <tr><td style="color:#0f172a;">Asistencias</td><td style="color:#0f172a;"><strong>{{ jugador['estadistica']['asistencias'] }}</strong></td></tr>
+                    <tr><td style="color:#0f172a;">Efectividad de pases</td><td style="color:#0f172a;"><strong>{{ jugador['estadistica']['efectividad_pases'] }}%</strong></td></tr>
+                    <tr><td style="color:#0f172a;">Faltas</td><td style="color:#0f172a;"><strong>{{ jugador['estadistica']['faltas'] }}</strong></td></tr>
+                    <tr><td style="color:#0f172a;">Tarjetas amarillas</td><td style="color:#0f172a;"><strong>{{ jugador['estadistica']['tarj_amarillas'] }}</strong></td></tr>
+                    <tr><td style="color:#0f172a;">Tarjetas rojas</td><td style="color:#0f172a;"><strong>{{ jugador['estadistica']['tarj_rojas'] }}</strong></td></tr>
+                </table>
+                {% if session.get('role') == 'admin' %}
+                    <a href="/estadisticas/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar estadísticas</a>
+                {% endif %}
+            </div>
         </div>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 {% endblock %}
