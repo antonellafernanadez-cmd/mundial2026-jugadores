@@ -4,11 +4,17 @@
 <div class="row">
     {% for seleccion in selecciones %}
     <div class="col-md-4 mb-3">
-        <div class="card p-3">
-            <h5>{{ seleccion.pais }}</h5>
-            <p class="mb-1"><strong>Entrenador:</strong> {{ seleccion.entrenador }}</p>
-            <p class="mb-2"><strong>Jugadores:</strong> {{ seleccion.jugadores|list|length }}</p>
-            <a href="/selecciones/{{ seleccion.id }}" class="btn btn-primary btn-sm">Ver jugadores</a>
+        <div class="card p-0 overflow-hidden">
+            {% set img_bandera = seleccion.pais | bandera %}
+            {% if img_bandera %}
+                <img src="{{ img_bandera }}" alt="Bandera de {{ seleccion.pais }}" class="card-img-top" style="height: 160px; object-fit: cover;">
+            {% endif %}
+            <div class="p-3">
+                <h5>{{ seleccion.pais }}</h5>
+                <p class="mb-1"><strong>Entrenador:</strong> {{ seleccion.entrenador }}</p>
+                <p class="mb-2"><strong>Jugadores:</strong> {{ seleccion.jugadores|list|length }}</p>
+                <a href="/selecciones/{{ seleccion.id }}" class="btn btn-primary btn-sm">Ver jugadores</a>
+            </div>
         </div>
     </div>
     {% endfor %}
