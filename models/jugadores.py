@@ -11,8 +11,8 @@ class Jugador(db.Model):
     tipo = db.Column(db.String(50))  # columna discriminadora para polimorfismo
     foto_url = db.Column(db.String(300), nullable=True)  # URL de la foto del jugador (viene de API-Football)
     seleccion_id = db.Column(db.Integer, db.ForeignKey("selecciones.id"), nullable=True) # Clave foránea hacia selecciones
-    estadistica = db.relationship("Estadistica", backref="jugador", uselist=False) # Relación 1 a 1 con Estadistica
-
+    estadistica = db.relationship("Estadistica", backref="jugador", uselist=False,cascade="all, delete-orphan") # Relación 1 a 1 con Estadistica
+    #cascade="all, delete-orphan" asegura que al eliminar un jugador, también se elimine su estadística asociada
     __mapper_args__ = {
         'polymorphic_identity': 'jugador', #es el tipo de cada jugador, cuando sea el tipo por ej: Arquero crea el objeto Arquero
         'polymorphic_on': tipo #se utiliza la columna tipo para diferenciar
