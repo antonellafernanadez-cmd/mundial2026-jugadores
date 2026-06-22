@@ -1,22 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 class="mb-4">Selecciones</h2>
-<div class="row">
-    {% for seleccion in selecciones %}
-    <div class="col-md-4 mb-3">
-        <div class="card p-0 overflow-hidden">
-            {% set img_bandera = seleccion.pais | bandera %}
-            {% if img_bandera %}
-                <img src="{{ img_bandera }}" alt="Bandera de {{ seleccion.pais }}" class="card-img-top" style="height: 160px; object-fit: cover;">
-            {% endif %}
-            <div class="p-3">
-                <h5>{{ seleccion.pais }}</h5>
-                <p class="mb-1"><strong>Entrenador:</strong> {{ seleccion.entrenador }}</p>
-                <p class="mb-2"><strong>Jugadores:</strong> {{ seleccion.jugadores|list|length }}</p>
-                <a href="/selecciones/{{ seleccion.id }}" class="btn btn-primary btn-sm">Ver jugadores</a>
+<div class="header-jugadores mb-4 d-flex justify-content-between align-items-start flex-wrap gap-3">
+    <h2 class="mb-1 text-white text-uppercase fw-bold">Selecciones</h2>
+    <p class="mb-0 text-light opacity-75">Explorá todas las selecciones del Mundial 2026.</p>
+</div>
+<div class="auth-wrapper">
+    <div class="container" style="padding-top: 20px; padding-bottom: 40px;color: #0f172a;">
+        <div class="row">
+            {% for seleccion in selecciones %}
+            <div class="col-md-4 mb-4">
+                <div class="auth-card p-0 overflow-hidden">
+                    {% set img_bandera = seleccion.pais | bandera %}
+                    {% if img_bandera %}
+                        <img src="{{ img_bandera }}" alt="Bandera de {{ seleccion.pais }}" class="w-100" style="height: 160px; object-fit: cover;">
+                    {% endif %}
+                    <div class="p-3">
+                        <h5>{{ seleccion.pais }}</h5>
+                        <p class="mb-1"><strong>Entrenador:</strong> {{ seleccion.entrenador }}</p>
+                        <p class="mb-2"><strong>Jugadores:</strong> {{ seleccion.jugadores|list|length }}</p>
+                        <a href="/selecciones/{{ seleccion.id }}" class="btn btn-auth-submit btn-sm">Ver jugadores</a>
+                    </div>
+                </div>
             </div>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
