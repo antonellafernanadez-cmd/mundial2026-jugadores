@@ -21,10 +21,15 @@ Marcelo Britos
 Antes de ejecutar la aplicación, se debe configurar las siguientes variables de entorno:
 
 MYSQL_USER=<tu_usuario>
+
 MYSQL_PASSWORD=<tu_contraseña>
+
 MYSQL_DATABASE=<nombre_de_la_base>
+
 MYSQL_HOST=<host_de_mysql>
+
 MYSQL_PORT=<puerto_de_mysql>
+
 API_FOOTBALL_KEY= Debe crear una cuenta en API football.com y obtener la clave de la API, con el plan gratuito es suficiente.
 
 ---
