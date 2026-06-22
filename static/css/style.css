@@ -114,14 +114,14 @@ body {
 .home-wrapper {
     background-color: #01060e;
     min-height: 100vh;
-    overflow-y: auto; /* Permite el uso del cursor para deslizar de forma natural */
+    overflow-y: auto;
 }
 
 /* ==========================================================================
    SECCIÓN SUPERIOR (ESTADIO / HERO)
    ========================================================================== */
 .hero-section {
-    background: linear-gradient(to bottom, rgba(1, 6, 14, 0.2), rgba(1, 6, 14, 0.4)), 
+    background: linear-gradient(to bottom, rgba(1, 6, 14, 0.2), rgba(1, 6, 14, 0.4)),
                 url('/static/images/estadio_noche.jpg') no-repeat center top;
     background-size: cover;
     padding-top: 80px;
@@ -136,11 +136,11 @@ body {
 }
 
 .hero-subtitle {
-    color: #ffffff !important; /* Blanco puro para que resalte */
-    font-weight: 500; /* Le da más cuerpo y grosor a la letra (semi-bold) */
+    color: #ffffff !important;
+    font-weight: 500;
     max-width: 540px;
-    line-height: 1.5; /* Separa un poquito las líneas para que no se amontone */
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Una sutil sombra negra detrás de las letras para despegarlas del fondo */
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .logo-hero-img {
@@ -148,7 +148,7 @@ body {
     filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5));
 }
 
-/* BOTONES PRINCIPALES (Estilo original recuperado) */
+/* BOTONES PRINCIPALES */
 .btn-primary-custom {
     background-color: #0056ff !important;
     border: none !important;
@@ -166,8 +166,8 @@ body {
 }
 
 .btn-outline-custom {
-    background-color: rgba(94, 139, 47, 0.2) !important; /* Fondo verde transparente */
-    border: 2px solid #5e8b2f !important;                /* Borde verde definido */
+    background-color: rgba(94, 139, 47, 0.2) !important;
+    border: 2px solid #5e8b2f !important;
     color: #ffffff !important;
     border-radius: 6px !important;
     padding: 10px 24px !important;
@@ -184,7 +184,7 @@ body {
    SECCIÓN INFERIOR (CONTENIDO OSCURO / CARDS)
    ========================================================================== */
 .info-section {
-    background-color: #01060e; /* Fondo oscuro liso e independiente del estadio */
+    background-color: #01060e;
     padding-top: 50px;
     padding-bottom: 40px;
 }
@@ -196,7 +196,6 @@ body {
     border-radius: 2px;
 }
 
-/* Tarjetas con la estética azulada traslúcida original */
 .feature-card {
     background: rgba(5, 15, 28, 0.65) !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -210,7 +209,6 @@ body {
     border-color: rgba(0, 86, 255, 0.3) !important;
 }
 
-/* Envoltorio de los íconos de Bootstrap (Tecnológico celular/celeste) */
 .icon-blue-wrapper {
     background-color: rgba(0, 86, 255, 0.15);
     color: #3b82f6;
@@ -223,14 +221,57 @@ body {
     font-size: 1.5rem;
 }
 
+/* ==========================================================================
+   TABLAS RESPONSIVAS
+   ========================================================================== */
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+}
+
+.table {
+    color: #ffffff;
+    min-width: 500px; /* Evita que las columnas se aplasten */
+}
+
+.table thead th {
+    background-color: rgba(0, 86, 255, 0.15);
+    color: #a0aec0;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.table tbody tr {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.04);
+}
+
+/* ==========================================================================
+   CARDS GENERALES (detalle jugador, formularios, etc.)
+   ========================================================================== */
+.card {
+    background-color: rgba(5, 15, 28, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+}
+
+.card h2, .card h3, .card h5 {
+    color: #ffffff;
+}
 
 /* ==========================================================================
    ESTRUCTURA DE AUTENTICACIÓN PREMIUM (REGISTRO / LOGIN)
    ========================================================================== */
-
 .auth-wrapper {
     min-height: 100vh;
-    /* Degradé premium fluido de 3 tonos: Negro de fondo profundo, Azul Mundial de transición y Celeste sutil */
     background: linear-gradient(135deg, #020710 20%, #002277 65%, #0056ff 100%) !important;
     display: flex;
     flex-direction: column;
@@ -239,14 +280,13 @@ body {
     overflow: hidden;
 }
 
-/* Agregamos un extra opcional para suavizar aún más la tarjeta blanca sobre este fondo */
 .auth-card {
     background-color: #ffffff !important;
     border: none !important;
-    border-radius: 24px !important; 
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important; /* Sombra más suave y natural */
+    border-radius: 24px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
     padding: 40px;
-    max-width: 520px; 
+    max-width: 520px;
     width: 100%;
 }
 
@@ -266,7 +306,7 @@ body {
 }
 
 .auth-card h2 {
-    color: #0f172a !important; /* Color oscuro profesional */
+    color: #0f172a !important;
     font-weight: 700;
     font-size: 1.8rem;
 }
@@ -276,7 +316,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Inputs y Selectores */
 .auth-label {
     color: #1e293b;
     font-weight: 600;
@@ -298,7 +337,6 @@ body {
     box-shadow: 0 0 0 4px rgba(0, 86, 255, 0.15) !important;
 }
 
-/* Botón de envío azul */
 .btn-auth-submit {
     background-color: #0056ff !important;
     border: none !important;
@@ -325,7 +363,9 @@ body {
     text-decoration: underline;
 }
 
-/* Footer institucional oscuro */
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
 .static-footer {
     background-color: rgba(2, 7, 16, 0.9);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -335,87 +375,460 @@ body {
    CONTENEDOR DE BIENVENIDA (ESTADIO Y TEXTOS)
    ========================================================================== */
 .welcome-hero {
-    min-height: 85vh; /* Ocupa casi toda la pantalla disponible abajo del navbar */
+    min-height: 85vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    /* Evita que la imagen se repita y la estira para que cubra toda la pantalla */
     background-repeat: no-repeat !important;
     background-position: center center !important;
     background-size: cover !important;
-    
     position: relative;
     padding: 60px 20px;
 }
 
-/* Sombra pesada para que los títulos blancos resalten sobre los reflectores del estadio */
-.welcome-hero h1, 
-.welcome-hero h2, 
+.welcome-hero h1,
+.welcome-hero h2,
 .welcome-hero p {
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 /* ==========================================================================
-   TABLAS Y CARDS OSCURAS (Sección Jugadores, Selecciones, Usuarios)
+   FORMULARIOS GENERALES (jugador, estadísticas, editar usuario)
    ========================================================================== */
-.card {
-    background-color: #020710 !important;
-    border: 1px solid rgba(255, 255, 255, 0.06) !important;
-    border-radius: 10px;
-}
-
-.table {
-    color: #ffffff;
-    margin-bottom: 0;
-    --bs-table-bg: transparent;
-    --bs-table-color: #ffffff;
-    --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
-    --bs-table-hover-bg: rgba(0, 86, 255, 0.12);
-    --bs-table-hover-color: #ffffff;
-}
-
-.table thead th {
-    background-color: #01060e;
-    color: #3b82f6;
-    border-bottom: 2px solid #0056ff;
-    font-weight: 700;
+.form-label {
+    color: #a0aec0;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8rem;
     letter-spacing: 0.5px;
+    margin-bottom: 6px;
 }
 
-.table tbody tr {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+.form-control,
+.form-select {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    padding: 10px 14px !important;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.table-hover tbody tr:hover {
-    background-color: rgba(0, 86, 255, 0.12);
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0056ff !important;
+    box-shadow: 0 0 0 3px rgba(0, 86, 255, 0.2) !important;
+    background-color: rgba(255, 255, 255, 0.09) !important;
+    color: #ffffff !important;
+    outline: none;
+}
+
+.form-select option {
+    background-color: #020710;
     color: #ffffff;
 }
 
-.table td, .table th {
-    vertical-align: middle;
-    padding: 0.85rem 0.75rem;
+/* ==========================================================================
+   PÁGINA DE SELECCIONES (cards en grilla)
+   ========================================================================== */
+.seleccion-card {
+    background: rgba(5, 15, 28, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Por si en algún momento se usa table-striped, anulamos el blanco de Bootstrap */
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(255, 255, 255, 0.02);
+.seleccion-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 86, 255, 0.35);
 }
 
-/* Links de "Ver" dentro de tablas, con el celeste de la app */
-.table a.btn-primary {
-    background-color: #0056ff !important;
-    border-color: #0056ff !important;
+/* ==========================================================================
+   ██████  MEDIA QUERIES  ██████
+   ========================================================================== */
+
+/* ------------------------------------------------------------------
+   PC / ESCRITORIO GRANDE  (≥ 1200px)
+   Pantallas Full HD, monitores amplios
+   ------------------------------------------------------------------ */
+@media (min-width: 1200px) {
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .logo-hero-img {
+        max-height: 460px;
+    }
+
+    .welcome-hero {
+        min-height: 88vh;
+        /* Imágenes panorámicas: en escritorio se centran bien */
+        background-position: center center !important;
+    }
+
+    .auth-card {
+        padding: 48px;
+    }
+
+    .custom-navbar .container-fluid {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
 }
 
+/* ------------------------------------------------------------------
+   TABLET  (768px – 1199px)
+   iPads y tablets en landscape/portrait
+   ------------------------------------------------------------------ */
+@media (min-width: 768px) and (max-width: 1199px) {
 
-.header-jugadores {
-    background: linear-gradient(to bottom, rgba(2, 7, 16, 0.55), rgba(2, 7, 16, 0.75)), url('/static/images/estadio_pelota.png') no-repeat center center;
-    background-size: cover;
-    border-radius: 10px;
-    padding: 1.8rem;
+    /* Navbar */
+    .custom-navbar .container-fluid {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .nav-active-line {
+        bottom: -14px;
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 2.6rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .logo-hero-img {
+        max-height: 320px;
+    }
+
+    .hero-section {
+        padding-top: 60px;
+        padding-bottom: 50px;
+        /* Imagen de estadio: en tablet aseguramos que se vea el campo */
+        background-position: center 30% !important;
+    }
+
+    /* Bienvenida - imágenes panorámicas muy anchas (1119×316 y 1114×305)
+       En tablet enfocamos el centro para no perder el sujeto principal */
+    .welcome-hero {
+        min-height: 70vh;
+        background-position: center center !important;
+        background-size: cover !important;
+        padding: 50px 30px;
+    }
+
+    .welcome-hero h1 {
+        font-size: 2.4rem;
+    }
+
+    .welcome-hero h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Auth */
+    .auth-card {
+        padding: 36px 32px;
+        max-width: 480px;
+    }
+
+    /* Tablas */
+    .table-responsive-wrapper {
+        border-radius: 6px;
+    }
+
+    /* Detalle jugador: las dos columnas se apilan */
+    .detalle-jugador-cols > .col-md-6 {
+        width: 100%;
+    }
+}
+
+/* ------------------------------------------------------------------
+   CELULAR  (< 768px)
+   Smartphones en portrait y landscape angosto
+   ------------------------------------------------------------------ */
+@media (max-width: 767px) {
+
+    /* ── Navbar ── */
+    .custom-navbar .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .nav-logo {
+        height: 36px;
+    }
+
+    .brand-text-wrapper span.fs-5 {
+        font-size: 1rem !important;
+    }
+
+    /* Menú colapsado: links apilados con separadores */
+    .navbar-collapse .navbar-nav {
+        padding: 12px 0;
+        gap: 4px !important;
+    }
+
+    .navbar-collapse .nav-link,
+    .navbar-collapse .btn-login,
+    .navbar-collapse .btn-register-nav {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 16px !important;
+        border-radius: 8px;
+        font-size: 0.9rem;
+    }
+
+    .navbar-collapse .btn-login {
+        margin-top: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .navbar-collapse .btn-register-nav {
+        margin-top: 6px;
+    }
+
+    /* Ocultar la línea activa en mobile (ocupa espacio innecesario) */
+    .nav-active-line {
+        display: none;
+    }
+
+    /* ── Hero ── */
+    .hero-section {
+        padding-top: 50px;
+        padding-bottom: 40px;
+        /* En mobile el estadio noche (740×493) se ve bien centrado */
+        background-position: center center !important;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+        text-align: center;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .logo-hero-img {
+        max-height: 220px;
+        margin-top: 24px;
+    }
+
+    .btn-primary-custom,
+    .btn-outline-custom {
+        width: 100%;
+        text-align: center;
+        padding: 12px 20px !important;
+    }
+
+    /* ── Bienvenida ──
+       Las imágenes panorámicas (1119×316 y 1114×305) son muy anchas para mobile.
+       Usamos background-size: auto 100% para que se vea el alto completo
+       y se muestre el sujeto central (copa/pelota) */
+    .welcome-hero {
+        min-height: 60vh;
+        padding: 40px 16px;
+        background-size: auto 100% !important;
+        background-position: center center !important;
+    }
+
+    .welcome-hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .welcome-hero h2 {
+        font-size: 1rem;
+    }
+
+    .welcome-hero p.lead {
+        font-size: 0.9rem;
+    }
+
+    /* ── Auth (Login / Register) ── */
+    .auth-card {
+        padding: 28px 20px;
+        border-radius: 16px !important;
+        margin: 16px;
+        max-width: 100%;
+    }
+
+    .auth-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .auth-icon-header {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+        border-radius: 14px;
+    }
+
+    /* Row de dos columnas en register → apila en mobile */
+    .auth-card .row.g-3 > [class*="col-md-6"] {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* ── Tablas ──
+       Todas las tablas se envuelven en scroll horizontal.
+       En los HTMLs hay que agregar class="table-responsive" al div padre. */
+    .card .card-body {
+        padding: 12px 8px;
+    }
+
+    .table {
+        font-size: 0.82rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    /* Botones de acción dentro de tablas: más chicos en mobile */
+    .table .btn-sm {
+        font-size: 0.72rem;
+        padding: 3px 7px;
+    }
+
+    /* ── Cards de detalle (jugador, selección) ── */
+    .card.p-4 {
+        padding: 20px 16px !important;
+    }
+
+    /* Detalle jugador: columnas que se apilan verticalmente */
+    .row.mt-4 > [class*="col-md-6"] {
+        width: 100% !important;
+        margin-bottom: 16px;
+    }
+
+    /* ── Formularios ── */
+    .row.justify-content-center > [class*="col-md-"] {
+        width: 100% !important;
+        padding: 0 12px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 1rem !important; /* Evita el zoom automático en iOS (min 16px) */
+        padding: 12px 14px !important;
+    }
+
+    /* Botones de formularios: full width en celular */
+    .d-flex.gap-2 {
+        flex-direction: column;
+    }
+
+    .d-flex.gap-2 .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ── Página jugadores / usuarios (header con botón) ── */
+    .d-flex.justify-content-between.align-items-center.mb-4 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 12px;
+    }
+
+    .d-flex.justify-content-between.align-items-center.mb-4 .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ── Selecciones (grilla de cards) ── */
+    /* col-md-4 ya colapsa a col-12 en mobile por Bootstrap,
+       pero ajustamos padding interno */
+    .col-md-4 .card.p-3 {
+        padding: 16px !important;
+    }
+
+    /* ── Footer ── */
+    .static-footer p {
+        font-size: 0.78rem;
+    }
+
+    /* ── Alertas ── */
+    .alert {
+        font-size: 0.88rem;
+        padding: 10px 14px;
+    }
+}
+
+/* ------------------------------------------------------------------
+   CELULAR PEQUEÑO  (< 380px)
+   Galaxy S, iPhone SE y similares
+   ------------------------------------------------------------------ */
+@media (max-width: 379px) {
+
+    .hero-title {
+        font-size: 1.65rem;
+    }
+
+    .welcome-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .auth-card {
+        padding: 22px 14px;
+        margin: 10px;
+    }
+
+    .auth-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .table {
+        font-size: 0.76rem;
+    }
+
+    .table .btn-sm {
+        font-size: 0.68rem;
+        padding: 2px 5px;
+    }
+
+    .nav-logo {
+        height: 30px;
+    }
+
+    .brand-text-wrapper span.fs-5 {
+        font-size: 0.88rem !important;
+    }
+}
+/* Fix: inputs dentro de auth-card (login y register) deben tener texto oscuro */
+.auth-card .form-control,
+.auth-card .form-select {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+.auth-card .form-control::placeholder {
+    color: #94a3b8 !important;
+}
+
+.auth-card .form-control:focus,
+.auth-card .form-select:focus {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
 }

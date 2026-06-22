@@ -11,67 +11,38 @@
 </div>
 <div class="card">
     <div class="card-body">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Edad</th>
-                    <th>Camiseta</th>
-                    <th>Tipo</th>
-                    <th>Selección</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for jugador in jugadores %}
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center gap-2">
-                            {% if jugador.foto_url %}
-                                <img src="{{ jugador.foto_url }}" alt="{{ jugador.nombre }}" class="rounded-circle" width="36" height="36" style="object-fit: cover;">
-                            {% else %}
-                                <i class="bi bi-person-circle fs-4 text-secondary"></i>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Camiseta</th>
+                        <th>Tipo</th>
+                        <th>Selección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for jugador in jugadores %}
+                    <tr>
+                        <td>{{ jugador.nombre }}</td>
+                        <td>{{ jugador.edad }}</td>
+                        <td>{{ jugador.num_camiseta }}</td>
+                        <td>{{ jugador.tipo }}</td>
+                        <td>{{ jugador.seleccion.pais if jugador.seleccion else '-' }}</td>
+                        <td>
+                            <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-sm btn-primary">Ver</a>
+                            {% if session.get('role') == 'admin' %}
+                                <a href="/jugadores/editar/{{ jugador.id }}" class="btn btn-sm btn-warning">Editar</a>
+                                <a href="/jugadores/eliminar/{{ jugador.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que querés eliminar este jugador?')">Eliminar</a>
                             {% endif %}
-                            <span>{{ jugador.nombre }}</span>
-                        </div>
-                    </td>
-                    <td>{{ jugador.edad }}</td>
-                    <td>{{ jugador.num_camiseta }}</td>
-                    <td>
-                        {% if jugador.tipo == 'arquero' %}
-                            <span class="badge bg-success">ARQUERO</span>
-                        {% elif jugador.tipo == 'defensor' %}
-                            <span class="badge bg-primary">DEFENSOR</span>
-                        {% elif jugador.tipo == 'mediocampista' %}
-                            <span class="badge bg-warning text-dark">MEDIOCAMPISTA</span>
-                        {% elif jugador.tipo == 'delantero' %}
-                            <span class="badge bg-danger">DELANTERO</span>
-                        {% else %}
-                            <span class="badge bg-secondary">{{ jugador.tipo }}</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if jugador.seleccion %}
-                            {% set img_bandera = jugador.seleccion.pais | bandera %}
-                            {% if img_bandera %}
-                                <img src="{{ img_bandera }}" alt="{{ jugador.seleccion.pais }}" width="20" class="me-1">
-                            {% endif %}
-                            {{ jugador.seleccion.pais }}
-                        {% else %}
-                            -
-                        {% endif %}
-                    </td>
-                    <td>
-                        <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-sm btn-primary">Ver</a>
-                        {% if session.get('role') == 'admin' %}
-                            <a href="/jugadores/editar/{{ jugador.id }}" class="btn btn-sm btn-warning">Editar</a>
-                            <a href="/jugadores/eliminar/{{ jugador.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que querés eliminar este jugador?')">Eliminar</a>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>    
     </div>
 </div>
 {% endblock %}
