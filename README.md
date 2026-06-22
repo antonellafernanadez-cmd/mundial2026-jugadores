@@ -8,8 +8,11 @@ Aplicación web desarrollada con Flask para gestionar jugadores del Mundial 2026
 
 # Integrantes del grupo
 Antonella Fernandez
+
 Leonel Bustos
+
 Javier Cabrera
+
 Marcelo Britos
 
 ---
