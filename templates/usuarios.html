@@ -17,6 +17,7 @@
                                 <th>Email</th>
                                 <th>Rol</th>
                                 <th>Acciones</th>
+                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,14 +28,24 @@
                                 <td>{{ user.email }}</td>
                                 <td>
                                     {% if user.role == 'admin' %}
-                                        <span class="badge bg-primary">ADMIN</span>
+                                    <span class="badge bg-primary">ADMIN</span>
                                     {% else %}
-                                        <span class="badge bg-secondary">USER</span>
+                                    <span class="badge bg-secondary">USER</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if user.aprobado %}
+                                    <span class="badge bg-success">Aprobado</span>
+                                    {% else %}
+                                    <span class="badge bg-warning text-dark">Pendiente</span>
+                                    <a href="/users/aprobar/{{ user.id }}"
+                                        class="btn btn-sm btn-success ms-1">Aprobar</a>
                                     {% endif %}
                                 </td>
                                 <td>
                                     <a href="/users/update/{{ user.id }}" class="btn btn-sm btn-primary">Editar</a>
-                                    <a href="/users/delete/{{ user.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</a>
+                                    <a href="/users/delete/{{ user.id }}" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('¿Seguro?')">Eliminar</a>
                                 </td>
                             </tr>
                             {% endfor %}

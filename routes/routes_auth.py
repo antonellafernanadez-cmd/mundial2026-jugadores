@@ -10,13 +10,16 @@ def login():
         password = request.form['password']
         user = Usuario.query.filter_by(email=email).first()
         if user and user.check_password(password):
+            if not user.aprobado:
+                return render_template('login.html', pendiente=True)
             session['user_id'] = user.id
             session['username'] = user.username
-            session['role'] = user.role  #guarda admin o user
+            session['role'] = user.role
             return redirect(url_for('routes_auth.bienvenida'))
         else:
             return render_template('login.html', error="Credenciales inválidas")
-    return render_template('login.html')
+    pendiente = request.args.get('pendiente')
+    return render_template('login.html', pendiente=pendiente)
 
 @auth_bp.route('/bienvenida')
 def bienvenida():

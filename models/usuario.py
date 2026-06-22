@@ -8,6 +8,7 @@ class Usuario(db.Model):
     password_hash = db.Column(db.String(200), nullable=False) 
     email = db.Column(db.String(120), unique=True, nullable=False)
     role = db.Column(db.String(20), default='user', nullable=False) #admin, entrenador, jugador
+    aprobado = db.Column(db.Boolean, default=False, nullable=False) #nuevo campo para controlar si el usuario ha sido aprobado por un admin
 
     def __init__(self, username, password, email, role='user'):
         if not username:
@@ -21,6 +22,7 @@ class Usuario(db.Model):
         self.email = email
         self.role = role
         self.set_password(password)  # hashea la contraseña al crear el usuario
+        self.aprobado = (role == 'admin')  # admins se aprueban solos
 
     def set_password(self, password): #Genera un hash seguro para la contraseña
         self.password_hash = generate_password_hash(password)
@@ -33,5 +35,6 @@ class Usuario(db.Model):
             "id": self.id,
             "username": self.username,
             "email":self.email,
-            "role": self.role
+            "role": self.role,
+            "aprobado": self.aprobado
         }
