@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="header-jugadores mb-4 d-flex justify-content-between align-items-start flex-wrap gap-3">
-        <h2 class="mb-1 text-white text-uppercase fw-bold">Jugadores</h2>
-        <p class="mb-0 text-light opacity-75">Explorá todos los jugadores del Mundial 2026.</p>
-    </div>
-    {% if session.get('role') == 'admin' %}
-        <a href="/jugadores/crear" class="btn btn-primary">+ Agregar Jugador</a>
-    {% endif %}
+
+    <h2 class="mb-1 text-white text-uppercase fw-bold">Jugadores</h2>
+    <p class="mb-0 text-light opacity-75">Explorá todos los jugadores del Mundial 2026.</p>
+</div>
+{% if session.get('role') == 'admin' %}
+<a href="/jugadores/crear" class="btn btn-primary">+ Agregar Jugador</a>
+{% endif %}
 </div>
 <div class="card">
     <div class="card-body">
@@ -64,8 +65,10 @@
                         <td>
                             <a href="/jugadores/detalle/{{ jugador.id }}" class="btn btn-sm btn-primary">Ver</a>
                             {% if session.get('role') == 'admin' %}
-                                <a href="/jugadores/editar/{{ jugador.id }}" class="btn btn-sm btn-warning">Editar</a>
-                                <a href="/jugadores/eliminar/{{ jugador.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que querés eliminar este jugador?')">Eliminar</a>
+                            <a href="/jugadores/editar/{{ jugador.id }}" class="btn btn-sm btn-warning">Editar</a>
+                            <button class="btn btn-sm btn-danger"
+                                onclick="confirmarEliminar({{ jugador.id }}, '{{ jugador.nombre }}')">Eliminar</button>
+
                             {% endif %}
                         </td>
                     </tr>
@@ -75,4 +78,60 @@
         </div>
     </div>
 </div>
+<!-- Modal eliminar -->
+<div id="modalEliminar"
+    style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1050; align-items:center; justify-content:center;">
+    <div
+        style="background:white; border-radius:16px; padding:2rem; max-width:400px; width:90%; text-align:center; animation:fadeInUp 0.2s ease;">
+        <div
+            style="width:60px; height:60px; border-radius:50%; background:#fff0f0; border:2px solid #ffcccc; display:flex; align-items:center; justify-content:center; margin:0 auto 1.25rem;">
+            <i class="bi bi-trash3-fill" style="font-size:26px; color:#dc3545;"></i>
+        </div>
+        <h5 style="font-weight:600; margin:0 0 0.5rem;">¿Eliminar jugador?</h5>
+        <p style="color:#666; font-size:0.9rem; margin:0 0 1.75rem;">
+            Vas a eliminar a <strong id="nombreJugador"></strong>. Esta acción no se puede deshacer.
+        </p>
+        <div style="display:flex; gap:10px;">
+            <button onclick="cerrarModal()"
+                style="flex:1; padding:10px; border-radius:8px; border:1.5px solid #dee2e6; background:white; cursor:pointer;">
+                Cancelar
+            </button>
+            <a id="linkEliminar" href="#"
+                style="flex:1; padding:10px; border-radius:8px; background:#dc3545; color:white; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:6px;">
+                <i class="bi bi-trash3"></i> Sí, eliminar
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script>
+    function confirmarEliminar(id, nombre) {
+        document.getElementById('nombreJugador').textContent = nombre;
+        document.getElementById('linkEliminar').href = '/jugadores/eliminar/' + id;
+        document.getElementById('modalEliminar').style.display = 'flex';
+    }
+    function cerrarModal() {
+        document.getElementById('modalEliminar').style.display = 'none';
+    }
+    document.getElementById('modalEliminar').addEventListener('click', function (e) {
+        if (e.target === this) cerrarModal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') cerrarModal();
+    });
+</script>
 {% endblock %}
