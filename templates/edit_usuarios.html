@@ -1,34 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row justify-content-center mt-4">
-    <div class="col-md-5">
-        <div class="card p-4">
-            <h2 class="mb-4">Editar Usuario</h2>
-            <form method="POST">
-                <div class="mb-3">
-                    <label class="form-label">Usuario</label>
-                    <input type="text" name="username" class="form-control" value="{{ user.username }}" required>
+<div class="auth-wrapper">
+    <div class="container" style="padding-top: 40px; padding-bottom: 40px;">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="auth-card">
+                    <h2 class="mb-4">Editar Usuario</h2>
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label class="auth-label">Usuario</label>
+                            <input type="text" name="username" class="auth-input form-control" value="{{ user.username }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="auth-label">Email</label>
+                            <input type="email" name="email" class="auth-input form-control" value="{{ user.email }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="auth-label">Nueva contraseña</label>
+                            <input type="password" name="password" class="auth-input form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="auth-label">Rol</label>
+                            <select name="role" class="auth-input form-control">
+                                <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
+                                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                            </select>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-auth-submit">Guardar cambios</button>
+                            <a href="/users/" class="btn btn-secondary">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" value="{{ user.email }}" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Nueva contraseña</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Rol</label>
-                    <select name="role" class="form-control">
-                        <option value="user" {% if user.role == 'user' %}selected{% endif %}>User</option>
-                        <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
-                    </select>
-                </div>
-                <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-                    <a href="/users/" class="btn btn-secondary">Cancelar</a>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

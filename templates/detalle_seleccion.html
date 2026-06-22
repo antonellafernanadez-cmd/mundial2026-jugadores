@@ -18,7 +18,16 @@
                 <tbody>
                     {% for jugador in seleccion.jugadores %}
                     <tr>
-                        <td>{{ jugador.nombre }}</td>
+                        <td>
+                            <div class="d-flex align-items-center gap-2">
+                                {% if jugador.foto_url %}
+                                    <img src="{{ jugador.foto_url }}" alt="{{ jugador.nombre }}" class="rounded-circle" width="36" height="36" style="object-fit: cover;">
+                                {% else %}
+                                    <i class="bi bi-person-circle fs-4 text-secondary"></i>
+                                {% endif %}
+                                <span>{{ jugador.nombre }}</span>
+                            </div>
+                        </td>
                         <td>{{ jugador.edad }}</td>
                         <td>{{ jugador.num_camiseta }}</td>
                         <td>{{ jugador.tipo }}</td>
@@ -27,7 +36,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>    
+        </div>
     </div>
 </div>
 <a href="{{ url_for('seleccion.get_selecciones') }}" class="btn btn-secondary mt-3">Volver</a>
