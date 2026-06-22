@@ -6,6 +6,26 @@ Aplicación web desarrollada con Flask para gestionar jugadores del Mundial 2026
 
 ---
 
+# Integrantes del grupo
+Antonella Fernandez
+Leonel Bustos
+Javier Cabrera
+Marcelo Britos
+
+---
+
+# Configuración de la app
+Antes de ejecutar la aplicación, se debe configurar las siguientes variables de entorno:
+
+MYSQL_USER=<tu_usuario>
+MYSQL_PASSWORD=<tu_contraseña>
+MYSQL_DATABASE=<nombre_de_la_base>
+MYSQL_HOST=<host_de_mysql>
+MYSQL_PORT=<puerto_de_mysql>
+API_FOOTBALL_KEY= Debe crear una cuenta en API football.com y obtener la clave de la API, con el plan gratuito es suficiente.
+
+---
+
 ## Tecnologías utilizadas
 
 - **Python** con **Flask** — framework web
@@ -30,39 +50,25 @@ Aplicación web desarrollada con Flask para gestionar jugadores del Mundial 2026
 ## Instalación
 
 ### 1. Clonar el repositorio
-```bash
-git clone <url-del-repositorio>
-cd Practicamundial2026
-```
 
-### 2. Crear y activar el entorno virtual
-```bash
-python -m venv venv
+https://github.com/antonellafernanadez-cmd/mundial2026-jugadores.git
 
-# Windows
-venv\Scripts\activate
+---
 
-# Mac/Linux
-source venv/bin/activate
-```
+### 2. Ingresar al repositorio
+cd mundial2026-jugadores
+code .
+
+---
+
 
 ### 3. Instalar dependencias
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Configurar variables de entorno
-Crear un archivo `.env` en la raíz del proyecto con el siguiente contenido:
-```
-MYSQL_USER=tu_usuario
-MYSQL_PASSWORD=tu_contraseña
-MYSQL_HOST=localhost
-MYSQL_PORT=3306
-MYSQL_DATABASE=nombre_de_tu_base_de_datos
-API_FOOTBALL_KEY=tu_api_key
-```
 
-### 5. Crear la base de datos en MySQL
+### 4. Crear la base de datos en MySQL
 ```sql
 CREATE DATABASE nombre_de_tu_base_de_datos;
 ```
@@ -83,12 +89,9 @@ python seed.py
 ```
 
 ### 3. Acceder a la aplicación
-Abrir el navegador en:
-```
-http://127.0.0.1:5000
-```
 
----
+Para comenzar a utilizar la aplicación, abra en el navegador: [http://localhost:5000/login](http://127.0.0.1:5000/)
+```
 
 ## Estructura del proyecto
 
@@ -159,6 +162,28 @@ Practicamundial2026/
 - Diseño temático Mundial 2026 con Bootstrap
 
 ---
+# Endpoints implementados
+GET-POST /users/register: Permite registrar nuevos usuarios.
+GET-POST /login: Permite iniciar una sesión.
+GET /bienvenida: Pantalla post-login para usuarios autenticados.
+GET /logout: Permite cerrar una sesión.
+GET /jugadores/ver_jugadores: Permite visualizar todos los jugadores cargados en la base de datos.
+GET /jugadores/detalle/: Permite obtener un jugador existente mediante su id.
+GET /jugadores/crear: Hace posible acceder al formulario para añadir un nuevo jugador.
+POST /jugadores/crear: Permite crear un nuevo jugador en la base de datos.
+GET /jugadores/editar/: Permite al usuario administrador acceder al formulario para editar un jugador.
+POST /jugadores/editar/: Permite actualizar los datos de un jugador existente.
+GET /jugadores/eliminar/: Permite eliminar un jugador de la base de datos.
+GET /estadisticas/<jugador_id>: Permite visualizar las estadísticas de un jugador específico.
+GET /estadisticas/editar/<jugador_id>: Permite acceder al formulario para editar las estadísticas de un jugador.
+POST /estadisticas/editar/<jugador_id>: Permite guardar las modificaciones de las estadísticas en la base de datos.
+GET /selecciones/ver_selecciones: Permite visualizar el listado de todas las selecciones de fútbol.
+GET /selecciones/: Permite obtener el detalle de una selección específica mediante su id.
+GET /users/: Permite al administrador visualizar el listado completo de usuarios del sistema.
+GET /users/update/: Permite acceder al formulario para editar los datos o rol de un usuario.
+POST /users/update/: Permite guardar la edición de un usuario en la base de datos.
+GET /users/delete/: Permite eliminar un usuario de la base de datos.
+GET /users/aprobar/: Permite al administrador aprobar y activar un usuario que se encuentra pendiente.
 
 ## Autores
 Antonella Fernandez, Leonel Bustos, Javier Cabrera y Marcelo Britos
