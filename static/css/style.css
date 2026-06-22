@@ -114,14 +114,14 @@ body {
 .home-wrapper {
     background-color: #01060e;
     min-height: 100vh;
-    overflow-y: auto;
+    overflow-y: auto; /* Permite el uso del cursor para deslizar de forma natural */
 }
 
 /* ==========================================================================
    SECCIÓN SUPERIOR (ESTADIO / HERO)
    ========================================================================== */
 .hero-section {
-    background: linear-gradient(to bottom, rgba(1, 6, 14, 0.2), rgba(1, 6, 14, 0.4)),
+    background: linear-gradient(to bottom, rgba(1, 6, 14, 0.2), rgba(1, 6, 14, 0.4)), 
                 url('/static/images/estadio_noche.jpg') no-repeat center top;
     background-size: cover;
     padding-top: 80px;
@@ -136,11 +136,11 @@ body {
 }
 
 .hero-subtitle {
-    color: #ffffff !important;
-    font-weight: 500;
+    color: #ffffff !important; /* Blanco puro para que resalte */
+    font-weight: 500; /* Le da más cuerpo y grosor a la letra (semi-bold) */
     max-width: 540px;
-    line-height: 1.5;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    line-height: 1.5; /* Separa un poquito las líneas para que no se amontone */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Una sutil sombra negra detrás de las letras para despegarlas del fondo */
 }
 
 .logo-hero-img {
@@ -148,7 +148,7 @@ body {
     filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.5));
 }
 
-/* BOTONES PRINCIPALES */
+/* BOTONES PRINCIPALES (Estilo original recuperado) */
 .btn-primary-custom {
     background-color: #0056ff !important;
     border: none !important;
@@ -166,8 +166,8 @@ body {
 }
 
 .btn-outline-custom {
-    background-color: rgba(94, 139, 47, 0.2) !important;
-    border: 2px solid #5e8b2f !important;
+    background-color: rgba(94, 139, 47, 0.2) !important; /* Fondo verde transparente */
+    border: 2px solid #5e8b2f !important;                /* Borde verde definido */
     color: #ffffff !important;
     border-radius: 6px !important;
     padding: 10px 24px !important;
@@ -184,7 +184,7 @@ body {
    SECCIÓN INFERIOR (CONTENIDO OSCURO / CARDS)
    ========================================================================== */
 .info-section {
-    background-color: #01060e;
+    background-color: #01060e; /* Fondo oscuro liso e independiente del estadio */
     padding-top: 50px;
     padding-bottom: 40px;
 }
@@ -196,6 +196,7 @@ body {
     border-radius: 2px;
 }
 
+/* Tarjetas con la estética azulada traslúcida original */
 .feature-card {
     background: rgba(5, 15, 28, 0.65) !important;
     border: 1px solid rgba(255, 255, 255, 0.05) !important;
@@ -209,6 +210,7 @@ body {
     border-color: rgba(0, 86, 255, 0.3) !important;
 }
 
+/* Envoltorio de los íconos de Bootstrap (Tecnológico celular/celeste) */
 .icon-blue-wrapper {
     background-color: rgba(0, 86, 255, 0.15);
     color: #3b82f6;
@@ -219,6 +221,203 @@ body {
     justify-content: center;
     border-radius: 8px;
     font-size: 1.5rem;
+}
+
+
+/* ==========================================================================
+   ESTRUCTURA DE AUTENTICACIÓN PREMIUM (REGISTRO / LOGIN)
+   ========================================================================== */
+
+.auth-wrapper {
+    min-height: 100vh;
+    /* Degradé premium fluido de 3 tonos: Negro de fondo profundo, Azul Mundial de transición y Celeste sutil */
+    background: linear-gradient(135deg, #020710 20%, #002277 65%, #0056ff 100%) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Agregamos un extra opcional para suavizar aún más la tarjeta blanca sobre este fondo */
+.auth-card {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 24px !important; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important; /* Sombra más suave y natural */
+    padding: 40px;
+    max-width: 520px; 
+    width: 100%;
+}
+
+/* Escudo Azul Superior con icono blanco */
+.auth-icon-header {
+    background-color: #0056ff;
+    color: #ffffff;
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 8px 20px rgba(0, 86, 255, 0.25);
+}
+
+.auth-card h2 {
+    color: #0f172a !important; /* Color oscuro profesional */
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.auth-card .subtitle {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* Inputs y Selectores */
+.auth-label {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+}
+
+.auth-input {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    color: #0f172a !important;
+    font-size: 0.95rem;
+}
+
+.auth-input:focus {
+    border-color: #0056ff !important;
+    box-shadow: 0 0 0 4px rgba(0, 86, 255, 0.15) !important;
+}
+
+/* Botón de envío azul */
+.btn-auth-submit {
+    background-color: #0056ff !important;
+    border: none !important;
+    color: #ffffff !important;
+    padding: 14px !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    font-size: 1rem;
+    transition: all 0.2s ease !important;
+}
+
+.btn-auth-submit:hover {
+    background-color: #0046cc !important;
+    transform: translateY(-1px);
+}
+
+.auth-footer-link {
+    color: #0056ff !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer institucional oscuro */
+.static-footer {
+    background-color: rgba(2, 7, 16, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   CONTENEDOR DE BIENVENIDA (ESTADIO Y TEXTOS)
+   ========================================================================== */
+.welcome-hero {
+    min-height: 85vh; /* Ocupa casi toda la pantalla disponible abajo del navbar */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Evita que la imagen se repita y la estira para que cubra toda la pantalla */
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    
+    position: relative;
+    padding: 60px 20px;
+}
+
+/* Sombra pesada para que los títulos blancos resalten sobre los reflectores del estadio */
+.welcome-hero h1, 
+.welcome-hero h2, 
+.welcome-hero p {
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* ==========================================================================
+   TABLAS Y CARDS OSCURAS (Sección Jugadores, Selecciones, Usuarios)
+   ========================================================================== */
+.card {
+    background-color: #020710 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 10px;
+}
+
+.table {
+    color: #ffffff;
+    margin-bottom: 0;
+    --bs-table-bg: transparent;
+    --bs-table-color: #ffffff;
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+    --bs-table-hover-bg: rgba(0, 86, 255, 0.12);
+    --bs-table-hover-color: #ffffff;
+}
+
+.table thead th {
+    background-color: #01060e;
+    color: #3b82f6;
+    border-bottom: 2px solid #0056ff;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 86, 255, 0.12);
+    color: #ffffff;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    padding: 0.85rem 0.75rem;
+}
+
+/* Por si en algún momento se usa table-striped, anulamos el blanco de Bootstrap */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Links de "Ver" dentro de tablas, con el celeste de la app */
+.table a.btn-primary {
+    background-color: #0056ff !important;
+    border-color: #0056ff !important;
+}
+
+
+.header-jugadores {
+    background: linear-gradient(to bottom, rgba(2, 7, 16, 0.55), rgba(2, 7, 16, 0.75)), url('/static/images/estadio_pelota.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    padding: 1.8rem;
 }
 
 /* ==========================================================================
@@ -251,203 +450,6 @@ body {
 
 .table tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.04);
-}
-
-/* ==========================================================================
-   CARDS GENERALES (detalle jugador, formularios, etc.)
-   ========================================================================== */
-.card {
-    background-color: rgba(5, 15, 28, 0.8) !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-radius: 12px !important;
-    color: #ffffff !important;
-}
-
-.card h2, .card h3, .card h5 {
-    color: #ffffff;
-}
-
-/* ==========================================================================
-   ESTRUCTURA DE AUTENTICACIÓN PREMIUM (REGISTRO / LOGIN)
-   ========================================================================== */
-.auth-wrapper {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #020710 20%, #002277 65%, #0056ff 100%) !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-}
-
-.auth-card {
-    background-color: #ffffff !important;
-    border: none !important;
-    border-radius: 24px !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
-    padding: 40px;
-    max-width: 520px;
-    width: 100%;
-}
-
-/* Escudo Azul Superior con icono blanco */
-.auth-icon-header {
-    background-color: #0056ff;
-    color: #ffffff;
-    width: 65px;
-    height: 65px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin: 0 auto 15px auto;
-    box-shadow: 0 8px 20px rgba(0, 86, 255, 0.25);
-}
-
-.auth-card h2 {
-    color: #0f172a !important;
-    font-weight: 700;
-    font-size: 1.8rem;
-}
-
-.auth-card .subtitle {
-    color: #64748b;
-    font-size: 0.95rem;
-}
-
-.auth-label {
-    color: #1e293b;
-    font-weight: 600;
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-}
-
-.auth-input {
-    background-color: #ffffff !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 8px !important;
-    padding: 12px 16px !important;
-    color: #0f172a !important;
-    font-size: 0.95rem;
-}
-
-.auth-input:focus {
-    border-color: #0056ff !important;
-    box-shadow: 0 0 0 4px rgba(0, 86, 255, 0.15) !important;
-}
-
-.btn-auth-submit {
-    background-color: #0056ff !important;
-    border: none !important;
-    color: #ffffff !important;
-    padding: 14px !important;
-    border-radius: 8px !important;
-    font-weight: 600 !important;
-    font-size: 1rem;
-    transition: all 0.2s ease !important;
-}
-
-.btn-auth-submit:hover {
-    background-color: #0046cc !important;
-    transform: translateY(-1px);
-}
-
-.auth-footer-link {
-    color: #0056ff !important;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.auth-footer-link:hover {
-    text-decoration: underline;
-}
-
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
-.static-footer {
-    background-color: rgba(2, 7, 16, 0.9);
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* ==========================================================================
-   CONTENEDOR DE BIENVENIDA (ESTADIO Y TEXTOS)
-   ========================================================================== */
-.welcome-hero {
-    min-height: 85vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-repeat: no-repeat !important;
-    background-position: center center !important;
-    background-size: cover !important;
-    position: relative;
-    padding: 60px 20px;
-}
-
-.welcome-hero h1,
-.welcome-hero h2,
-.welcome-hero p {
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 2px 5px rgba(0, 0, 0, 0.7);
-}
-
-/* ==========================================================================
-   FORMULARIOS GENERALES (jugador, estadísticas, editar usuario)
-   ========================================================================== */
-.form-label {
-    color: #a0aec0;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-}
-
-.form-control,
-.form-select {
-    background-color: rgba(255, 255, 255, 0.06) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
-    border-radius: 8px !important;
-    color: #ffffff !important;
-    padding: 10px 14px !important;
-    font-size: 0.95rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-control::placeholder {
-    color: rgba(255, 255, 255, 0.3);
-}
-
-.form-control:focus,
-.form-select:focus {
-    border-color: #0056ff !important;
-    box-shadow: 0 0 0 3px rgba(0, 86, 255, 0.2) !important;
-    background-color: rgba(255, 255, 255, 0.09) !important;
-    color: #ffffff !important;
-    outline: none;
-}
-
-.form-select option {
-    background-color: #020710;
-    color: #ffffff;
-}
-
-/* ==========================================================================
-   PÁGINA DE SELECCIONES (cards en grilla)
-   ========================================================================== */
-.seleccion-card {
-    background: rgba(5, 15, 28, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 12px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.seleccion-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(0, 86, 255, 0.35);
 }
 
 /* ==========================================================================
