@@ -2,6 +2,8 @@
 {% block content %}
 <div class="auth-wrapper">
     <div class="row mt-4 w-100 justify-content-center">
+
+        <!-- Tarjeta jugador -->
         <div class="col-md-5">
             <div class="auth-card p-4 text-center mx-auto">
                 {% if jugador['foto_url'] %}
@@ -14,13 +16,26 @@
                         <i class="bi bi-person-fill" style="font-size: 100px; color: #0056ff;"></i>
                     </div>
                 {% endif %}
-                
 
-                <!--cambie el boton volver -->
-            <a href="{{ url_for('seleccion.get_seleccion', id=jugador.seleccion_id) }}" class="btn btn-secondary">Volver</a>
+                <h2 class="mb-3">{{ jugador['nombre'] }}</h2>
+
+                <div class="text-start mx-auto" style="max-width: 280px; color: #0f172a;">
+                    <p><strong>Tipo:</strong> {{ jugador['tipo'] }}</p>
+                    <p><strong>Edad:</strong> {{ jugador['edad'] }}</p>
+                    <p><strong>Número de camiseta:</strong> {{ jugador['num_camiseta'] }}</p>
+                </div>
+
+                <div class="d-flex justify-content-center gap-2 mt-3">
+                    {% if session.get('role') == 'admin' %}
+                        <a href="/jugadores/editar/{{ jugador['id'] }}" class="btn btn-primary">Editar</a>
+                        <a href="/jugadores/eliminar/{{ jugador['id'] }}" class="btn btn-danger" onclick="return confirm('¿Seguro?')">Eliminar</a>
+                    {% endif %}
+                    <a href="/jugadores/ver_jugadores" class="btn btn-secondary">Volver</a>
+                </div>
             </div>
         </div>
 
+        <!-- Tarjeta estadísticas -->
         {% if jugador['estadistica'] %}
         <div class="col-md-5">
             <div class="auth-card p-4">
@@ -39,6 +54,7 @@
             </div>
         </div>
         {% endif %}
+
     </div>
 </div>
 {% endblock %}
