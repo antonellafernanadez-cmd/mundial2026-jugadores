@@ -1,3 +1,4 @@
+from models import usuario
 from models.usuario import Usuario
 from models.db import db
  
@@ -21,6 +22,10 @@ def registrar_usuario(data):
         # verificar que el email no esté en uso
         if Usuario.query.filter_by(email=email).first():
             return {"error": "El email ya está registrado"}
+        
+        # Si el usuario que se está registrando es un admin, se aprueba automáticamente. Si es otro rol, queda pendiente de aprobación.
+        if not usuario.aprobado and usuario.role != 'admin':
+            return {"error": "Tu cuenta aún no fue aprobada por un administrador"}
  
         nuevo_usuario = Usuario(
             username=username,

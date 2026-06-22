@@ -65,6 +65,18 @@ def register():
         new_user = Usuario(username=username, password=password, email=email)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('routes_auth.login'))
+        return redirect(url_for('routes_auth.login') + '?pendiente=1')
 
     return render_template('register.html')
+
+
+# Aprobar usuario (solo admin)
+@users_bp.route('/aprobar/<int:id>')
+@login_required
+@admin_required
+def aprobar_user(id):
+    user = Usuario.query.get(id)
+    if user:
+        user.aprobado = True
+        db.session.commit()
+    return redirect(url_for('users_bp.get_users'))
